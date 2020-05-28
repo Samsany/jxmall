@@ -15,6 +15,9 @@
         <module>jxmall-order</module>
         <module>jxmall-product</module>
         <module>jxmall-ware</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>jxmall-common</module>
     </modules>
 
 </project>

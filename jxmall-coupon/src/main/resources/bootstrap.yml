@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: jxmall-coupon
+
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.200.50:1111
