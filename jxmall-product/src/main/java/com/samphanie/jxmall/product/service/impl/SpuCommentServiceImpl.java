@@ -10,11 +10,10 @@ import com.samphanie.common.utils.Query;
 
 import com.samphanie.jxmall.product.mapper.SpuCommentMapper;
 import com.samphanie.jxmall.product.entity.SpuComment;
-import com.samphanie.jxmall.product.service.SpuCommentService;
+import com.samphanie.jxmall.product.service.ISpuCommentService;
 
-
-@Service("spuCommentService")
-public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentMapper, SpuComment> implements SpuCommentService {
+@Service
+public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentMapper, SpuComment> implements ISpuCommentService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

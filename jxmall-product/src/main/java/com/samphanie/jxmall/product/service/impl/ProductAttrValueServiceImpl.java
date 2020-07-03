@@ -10,11 +10,10 @@ import com.samphanie.common.utils.Query;
 
 import com.samphanie.jxmall.product.mapper.ProductAttrValueMapper;
 import com.samphanie.jxmall.product.entity.ProductAttrValue;
-import com.samphanie.jxmall.product.service.ProductAttrValueService;
+import com.samphanie.jxmall.product.service.IProductAttrValueService;
 
-
-@Service("productAttrValueService")
-public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueMapper, ProductAttrValue> implements ProductAttrValueService {
+@Service
+public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueMapper, ProductAttrValue> implements IProductAttrValueService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

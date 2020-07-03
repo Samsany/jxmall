@@ -3,39 +3,33 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.Brand;
-import com.samphanie.jxmall.product.service.BrandService;
+import com.samphanie.jxmall.product.service.IBrandService;
 import com.samphanie.common.utils.PageUtils;
 
 import javax.annotation.Resource;
 import com.samphanie.common.utils.R;
-
-
 
 /**
  * 品牌
  *
  * @author dries
  * @email samphsanie@gmail.com
- * @date 2020-06-25 01:14:34
+ * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product")
+@RequestMapping("product/Brand")
 public class BrandController {
 
     @Resource
-    private BrandService brandService;
+    private IBrandService brandService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = brandService.queryPage(params);
 
@@ -46,7 +40,7 @@ public class BrandController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{brandId}")
+    @GetMapping("/info/{brandId}")
     public R info(@PathVariable("brandId") Long brandId){
 		Brand brand = brandService.getById(brandId);
 
@@ -56,7 +50,7 @@ public class BrandController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@RequestBody Brand brand){
 		brandService.save(brand);
 
@@ -66,7 +60,7 @@ public class BrandController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public R update(@RequestBody Brand brand){
 		brandService.updateById(brand);
 
@@ -76,7 +70,7 @@ public class BrandController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public R delete(@RequestBody Long[] brandIds){
 		brandService.removeByIds(Arrays.asList(brandIds));
 

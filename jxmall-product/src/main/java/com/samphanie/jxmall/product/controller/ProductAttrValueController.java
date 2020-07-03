@@ -3,39 +3,33 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.ProductAttrValue;
-import com.samphanie.jxmall.product.service.ProductAttrValueService;
+import com.samphanie.jxmall.product.service.IProductAttrValueService;
 import com.samphanie.common.utils.PageUtils;
 
 import javax.annotation.Resource;
 import com.samphanie.common.utils.R;
-
-
 
 /**
  * spu属性值
  *
  * @author dries
  * @email samphsanie@gmail.com
- * @date 2020-06-25 01:14:34
+ * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product")
+@RequestMapping("product/ProductAttrValue")
 public class ProductAttrValueController {
 
     @Resource
-    private ProductAttrValueService productAttrValueService;
+    private IProductAttrValueService productAttrValueService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = productAttrValueService.queryPage(params);
 
@@ -46,7 +40,7 @@ public class ProductAttrValueController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		ProductAttrValue productAttrValue = productAttrValueService.getById(id);
 
@@ -56,7 +50,7 @@ public class ProductAttrValueController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@RequestBody ProductAttrValue productAttrValue){
 		productAttrValueService.save(productAttrValue);
 
@@ -66,7 +60,7 @@ public class ProductAttrValueController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public R update(@RequestBody ProductAttrValue productAttrValue){
 		productAttrValueService.updateById(productAttrValue);
 
@@ -76,7 +70,7 @@ public class ProductAttrValueController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		productAttrValueService.removeByIds(Arrays.asList(ids));
 

@@ -3,39 +3,33 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.Category;
-import com.samphanie.jxmall.product.service.CategoryService;
+import com.samphanie.jxmall.product.service.ICategoryService;
 import com.samphanie.common.utils.PageUtils;
 
 import javax.annotation.Resource;
 import com.samphanie.common.utils.R;
-
-
 
 /**
  * 商品三级分类
  *
  * @author dries
  * @email samphsanie@gmail.com
- * @date 2020-06-25 01:14:34
+ * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product")
+@RequestMapping("product/Category")
 public class CategoryController {
 
     @Resource
-    private CategoryService categoryService;
+    private ICategoryService categoryService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = categoryService.queryPage(params);
 
@@ -46,7 +40,7 @@ public class CategoryController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{catId}")
+    @GetMapping("/info/{catId}")
     public R info(@PathVariable("catId") Long catId){
 		Category category = categoryService.getById(catId);
 
@@ -56,7 +50,7 @@ public class CategoryController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@RequestBody Category category){
 		categoryService.save(category);
 
@@ -66,7 +60,7 @@ public class CategoryController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public R update(@RequestBody Category category){
 		categoryService.updateById(category);
 
@@ -76,7 +70,7 @@ public class CategoryController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public R delete(@RequestBody Long[] catIds){
 		categoryService.removeByIds(Arrays.asList(catIds));
 

@@ -3,39 +3,33 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.SkuSaleAttrValue;
-import com.samphanie.jxmall.product.service.SkuSaleAttrValueService;
+import com.samphanie.jxmall.product.service.ISkuSaleAttrValueService;
 import com.samphanie.common.utils.PageUtils;
 
 import javax.annotation.Resource;
 import com.samphanie.common.utils.R;
-
-
 
 /**
  * sku销售属性&值
  *
  * @author dries
  * @email samphsanie@gmail.com
- * @date 2020-06-25 01:14:34
+ * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product")
+@RequestMapping("product/SkuSaleAttrValue")
 public class SkuSaleAttrValueController {
 
     @Resource
-    private SkuSaleAttrValueService skuSaleAttrValueService;
+    private ISkuSaleAttrValueService skuSaleAttrValueService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = skuSaleAttrValueService.queryPage(params);
 
@@ -46,7 +40,7 @@ public class SkuSaleAttrValueController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		SkuSaleAttrValue skuSaleAttrValue = skuSaleAttrValueService.getById(id);
 
@@ -56,7 +50,7 @@ public class SkuSaleAttrValueController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@RequestBody SkuSaleAttrValue skuSaleAttrValue){
 		skuSaleAttrValueService.save(skuSaleAttrValue);
 
@@ -66,7 +60,7 @@ public class SkuSaleAttrValueController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public R update(@RequestBody SkuSaleAttrValue skuSaleAttrValue){
 		skuSaleAttrValueService.updateById(skuSaleAttrValue);
 
@@ -76,7 +70,7 @@ public class SkuSaleAttrValueController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		skuSaleAttrValueService.removeByIds(Arrays.asList(ids));
 

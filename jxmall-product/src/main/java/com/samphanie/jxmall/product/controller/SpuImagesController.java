@@ -3,39 +3,33 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.SpuImages;
-import com.samphanie.jxmall.product.service.SpuImagesService;
+import com.samphanie.jxmall.product.service.ISpuImagesService;
 import com.samphanie.common.utils.PageUtils;
 
 import javax.annotation.Resource;
 import com.samphanie.common.utils.R;
-
-
 
 /**
  * spu图片
  *
  * @author dries
  * @email samphsanie@gmail.com
- * @date 2020-06-25 01:14:34
+ * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product")
+@RequestMapping("product/SpuImages")
 public class SpuImagesController {
 
     @Resource
-    private SpuImagesService spuImagesService;
+    private ISpuImagesService spuImagesService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuImagesService.queryPage(params);
 
@@ -46,7 +40,7 @@ public class SpuImagesController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		SpuImages spuImages = spuImagesService.getById(id);
 
@@ -56,7 +50,7 @@ public class SpuImagesController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@RequestBody SpuImages spuImages){
 		spuImagesService.save(spuImages);
 
@@ -66,7 +60,7 @@ public class SpuImagesController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public R update(@RequestBody SpuImages spuImages){
 		spuImagesService.updateById(spuImages);
 
@@ -76,7 +70,7 @@ public class SpuImagesController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		spuImagesService.removeByIds(Arrays.asList(ids));
 

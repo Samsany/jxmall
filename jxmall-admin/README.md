@@ -1,8 +1,8 @@
 **项目说明** 
 - jxmall-admin是一个轻量级的，前后端分离的Java快速开发平台，能快速开发项目并交付【接私活利器】
 - 支持MySQL、Oracle、SQL Server、PostgreSQL等主流数据库
-- 前端地址：https://gitee.com/renrenio/jxmall-admin-vue
-- 代码生成器：https://gitee.com/renrenio/jxmall-generator
+- 前端地址：https://gitee.com/samphanieio/jxmall-admin-vue
+- 代码生成器：https://gitee.com/samphanieio/jxmall-generator
 
 <br>
  
@@ -39,7 +39,7 @@ jxmall-admin
 │  ├─oss 文件服务模块
 │  └─sys 权限模块
 │ 
-├─RenrenApplication 项目启动类
+├─samphanieApplication 项目启动类
 │  
 ├──resources 
 │  ├─mapper SQL对应的XML文件
@@ -49,9 +49,9 @@ jxmall-admin
 <br> 
 
 **如何交流、反馈、参与贡献？** 
-- 开发文档：https://www.renren.io/guide
-- Git仓库：https://gitee.com/renrenio/jxmall-admin
-- [人人开源社区](https://www.renren.io/community)：https://www.renren.io/community
+- 开发文档：https://www.samphanie.io/guide
+- Git仓库：https://gitee.com/samphanieio/jxmall-admin
+- [人人开源社区](https://www.samphanie.io/community)：https://www.samphanie.io/community
 - 官方QQ群：324780204、145799952
 - 技术讨论、二次开发等咨询、问题和建议，请移步到人人开源社区，我会在第一时间进行解答和回复！
 - 如需关注项目最新动态，请Watch、Star项目，同时也是对项目最好的支持
@@ -79,10 +79,10 @@ jxmall-admin
  **后端部署**
 - 通过git下载源码
 - idea、eclipse需安装lombok插件，不然会提示找不到entity的get set方法
-- 创建数据库renren_fast，数据库编码为UTF-8
+- 创建数据库samphanie_fast，数据库编码为UTF-8
 - 执行db/mysql.sql文件，初始化数据
 - 修改application-dev.yml，更新MySQL账号和密码
-- Eclipse、IDEA运行RenrenApplication.java，则可启动项目
+- Eclipse、IDEA运行samphanieApplication.java，则可启动项目
 - Swagger文档路径：http://localhost:8080/jxmall-admin/swagger/index.html
 - Swagger注解路径：http://localhost:8080/jxmall-admin/swagger-ui.html
 
@@ -90,14 +90,14 @@ jxmall-admin
 
  **前端部署**
  - 本项目是前后端分离的，还需要部署前端，才能运行起来
- - 前端下载地址：https://gitee.com/renrenio/jxmall-admin-vue
- - 前端部署文档：https://gitee.com/renrenio/jxmall-admin-vue/wikis/Home
+ - 前端下载地址：https://gitee.com/samphanieio/jxmall-admin-vue
+ - 前端部署文档：https://gitee.com/samphanieio/jxmall-admin-vue/wikis/Home
  - 前端部署完毕，就可以访问项目了，账号：admin，密码：admin
  
  <br>
 
  **项目演示**
-- 演示地址：http://demo.open.renren.io/jxmall-admin
+- 演示地址：http://demo.open.samphanie.io/jxmall-admin
 - 账号密码：admin/admin
 <br> 
 

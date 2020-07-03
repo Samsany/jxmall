@@ -1,35 +1,35 @@
 package com.samphanie.jxmall.product.controller;
 
-import com.samphanie.common.utils.PageUtils;
-import com.samphanie.common.utils.R;
-import com.samphanie.jxmall.product.entity.AttrAttrgroupRelation;
-import com.samphanie.jxmall.product.service.AttrAttrgroupRelationService;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.*;
 
+import com.samphanie.jxmall.product.entity.AttrAttrgroupRelation;
+import com.samphanie.jxmall.product.service.IAttrAttrgroupRelationService;
+import com.samphanie.common.utils.PageUtils;
+
+import javax.annotation.Resource;
+import com.samphanie.common.utils.R;
 
 /**
  * 属性&属性分组关联
  *
  * @author dries
  * @email samphsanie@gmail.com
- * @date 2020-06-25 01:14:34
+ * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product")
+@RequestMapping("product/AttrAttrgroupRelation")
 public class AttrAttrgroupRelationController {
 
     @Resource
-    private AttrAttrgroupRelationService attrAttrgroupRelationService;
+    private IAttrAttrgroupRelationService attrAttrgroupRelationService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrAttrgroupRelationService.queryPage(params);
 
@@ -40,7 +40,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		AttrAttrgroupRelation attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
 
@@ -50,7 +50,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@RequestBody AttrAttrgroupRelation attrAttrgroupRelation){
 		attrAttrgroupRelationService.save(attrAttrgroupRelation);
 
@@ -60,7 +60,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public R update(@RequestBody AttrAttrgroupRelation attrAttrgroupRelation){
 		attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
 
@@ -70,7 +70,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
 

@@ -10,11 +10,10 @@ import com.samphanie.common.utils.Query;
 
 import com.samphanie.jxmall.product.mapper.CategoryBrandRelationMapper;
 import com.samphanie.jxmall.product.entity.CategoryBrandRelation;
-import com.samphanie.jxmall.product.service.CategoryBrandRelationService;
+import com.samphanie.jxmall.product.service.ICategoryBrandRelationService;
 
-
-@Service("categoryBrandRelationService")
-public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationMapper, CategoryBrandRelation> implements CategoryBrandRelationService {
+@Service
+public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationMapper, CategoryBrandRelation> implements ICategoryBrandRelationService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

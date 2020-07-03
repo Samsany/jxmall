@@ -10,11 +10,10 @@ import com.samphanie.common.utils.Query;
 
 import com.samphanie.jxmall.product.mapper.CommentReplayMapper;
 import com.samphanie.jxmall.product.entity.CommentReplay;
-import com.samphanie.jxmall.product.service.CommentReplayService;
+import com.samphanie.jxmall.product.service.ICommentReplayService;
 
-
-@Service("commentReplayService")
-public class CommentReplayServiceImpl extends ServiceImpl<CommentReplayMapper, CommentReplay> implements CommentReplayService {
+@Service
+public class CommentReplayServiceImpl extends ServiceImpl<CommentReplayMapper, CommentReplay> implements ICommentReplayService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

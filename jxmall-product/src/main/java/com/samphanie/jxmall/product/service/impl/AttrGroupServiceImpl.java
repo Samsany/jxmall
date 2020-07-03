@@ -10,11 +10,10 @@ import com.samphanie.common.utils.Query;
 
 import com.samphanie.jxmall.product.mapper.AttrGroupMapper;
 import com.samphanie.jxmall.product.entity.AttrGroup;
-import com.samphanie.jxmall.product.service.AttrGroupService;
+import com.samphanie.jxmall.product.service.IAttrGroupService;
 
-
-@Service("attrGroupService")
-public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupMapper, AttrGroup> implements AttrGroupService {
+@Service
+public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupMapper, AttrGroup> implements IAttrGroupService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

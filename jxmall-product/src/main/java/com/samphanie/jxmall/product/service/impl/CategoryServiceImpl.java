@@ -10,11 +10,10 @@ import com.samphanie.common.utils.Query;
 
 import com.samphanie.jxmall.product.mapper.CategoryMapper;
 import com.samphanie.jxmall.product.entity.Category;
-import com.samphanie.jxmall.product.service.CategoryService;
+import com.samphanie.jxmall.product.service.ICategoryService;
 
-
-@Service("categoryService")
-public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
+@Service
+public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements ICategoryService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

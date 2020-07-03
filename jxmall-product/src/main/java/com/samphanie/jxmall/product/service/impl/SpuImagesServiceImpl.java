@@ -10,11 +10,10 @@ import com.samphanie.common.utils.Query;
 
 import com.samphanie.jxmall.product.mapper.SpuImagesMapper;
 import com.samphanie.jxmall.product.entity.SpuImages;
-import com.samphanie.jxmall.product.service.SpuImagesService;
+import com.samphanie.jxmall.product.service.ISpuImagesService;
 
-
-@Service("spuImagesService")
-public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesMapper, SpuImages> implements SpuImagesService {
+@Service
+public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesMapper, SpuImages> implements ISpuImagesService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

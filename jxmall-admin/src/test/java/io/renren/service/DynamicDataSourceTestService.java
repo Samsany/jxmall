@@ -1,16 +1,16 @@
 /**
  * Copyright (c) 2016-2019 人人开源 All rights reserved.
  *
- * https://www.renren.io
+ * https://www.samphanie.io
  *
  * 版权所有，侵权必究！
  */
 
-package io.renren.service;
+package io.samphanie.service;
 
-import io.renren.datasource.annotation.DataSource;
-import io.renren.modules.sys.dao.SysUserDao;
-import io.renren.modules.sys.entity.SysUserEntity;
+import io.samphanie.datasource.annotation.DataSource;
+import io.samphanie.modules.sys.dao.SysUserDao;
+import io.samphanie.modules.sys.entity.SysUserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

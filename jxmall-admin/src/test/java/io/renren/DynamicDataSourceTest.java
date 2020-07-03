@@ -1,14 +1,14 @@
 /**
  * Copyright (c) 2016-2019 人人开源 All rights reserved.
  *
- * https://www.renren.io
+ * https://www.samphanie.io
  *
  * 版权所有，侵权必究！
  */
 
-package io.renren;
+package io.samphanie;
 
-import io.renren.service.DynamicDataSourceTestService;
+import io.samphanie.service.DynamicDataSourceTestService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,39 +3,33 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.SpuInfoDesc;
-import com.samphanie.jxmall.product.service.SpuInfoDescService;
+import com.samphanie.jxmall.product.service.ISpuInfoDescService;
 import com.samphanie.common.utils.PageUtils;
 
 import javax.annotation.Resource;
 import com.samphanie.common.utils.R;
-
-
 
 /**
  * spu信息介绍
  *
  * @author dries
  * @email samphsanie@gmail.com
- * @date 2020-06-25 01:14:34
+ * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product")
+@RequestMapping("product/SpuInfoDesc")
 public class SpuInfoDescController {
 
     @Resource
-    private SpuInfoDescService spuInfoDescService;
+    private ISpuInfoDescService spuInfoDescService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuInfoDescService.queryPage(params);
 
@@ -46,7 +40,7 @@ public class SpuInfoDescController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{spuId}")
+    @GetMapping("/info/{spuId}")
     public R info(@PathVariable("spuId") Long spuId){
 		SpuInfoDesc spuInfoDesc = spuInfoDescService.getById(spuId);
 
@@ -56,7 +50,7 @@ public class SpuInfoDescController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@RequestBody SpuInfoDesc spuInfoDesc){
 		spuInfoDescService.save(spuInfoDesc);
 
@@ -66,7 +60,7 @@ public class SpuInfoDescController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public R update(@RequestBody SpuInfoDesc spuInfoDesc){
 		spuInfoDescService.updateById(spuInfoDesc);
 
@@ -76,7 +70,7 @@ public class SpuInfoDescController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     public R delete(@RequestBody Long[] spuIds){
 		spuInfoDescService.removeByIds(Arrays.asList(spuIds));
 
