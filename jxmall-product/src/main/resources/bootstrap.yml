@@ -12,7 +12,7 @@ spring:
         refresh-enabled: true
 
 #        命名空间
-        namespace: d1811724-f605-4522-9430-3ac08b858546
+        namespace: 02d64543-2d8e-4510-b06f-03fd310cb368
 #        配置集
         extension-configs:
           - data-id: datasource.yml

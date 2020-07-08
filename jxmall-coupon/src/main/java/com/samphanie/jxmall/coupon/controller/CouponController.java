@@ -28,12 +28,12 @@ public class CouponController {
     @Resource
     private ICouponService couponService;
 
-    @Value("${coupon.username}")
-    private String username;
+    @Value("${server.port}")
+    private String port;
 
     @GetMapping("/test")
     public R username() {
-        return R.ok().put("username", username);
+        return R.ok().put("port", port);
     }
 
     @GetMapping("/member/list")

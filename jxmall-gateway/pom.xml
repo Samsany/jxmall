@@ -8,18 +8,33 @@
         <version>${jxmall.version}</version>
     </parent>
 
-    <artifactId>jxmall-member</artifactId>
+    <artifactId>jxmall-gateway</artifactId>
     <version>${jxmall.version}</version>
-    <name>jxmall-member</name>
-    <description>jxmall-用户服务</description>
+    <name>jxmall-gateway</name>
+    <description>网关服务</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>com.samphanie.jxmall</groupId>
             <artifactId>jxmall-common</artifactId>
             <version>${jxmall.version}</version>
         </dependency>
+        <!--        API网关-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-webflux</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
+
 
 </project>

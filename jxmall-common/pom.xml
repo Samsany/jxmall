@@ -2,20 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>jxmall</artifactId>
         <groupId>com.samphanie.jxmall</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${jxmall.version}</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jxmall-common</artifactId>
+    <name>jxmall-common</name>
+    <version>${jxmall.version}</version>
     <description>每一个服务公共的依赖，bean，工具类</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
         <mysql.version>8.0.20</mysql.version>
         <lombok.version>1.18.12</lombok.version>
@@ -30,29 +30,22 @@
         <commons.configuration.version>1.10</commons.configuration.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
 
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
 <!--        openfeign-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

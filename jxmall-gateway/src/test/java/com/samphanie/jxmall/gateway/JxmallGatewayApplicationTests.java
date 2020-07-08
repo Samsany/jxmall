@@ -1,14 +1,11 @@
-package io.samphanie;
-
+package com.samphanie.jxmall.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class SamphanieApplicationTests {
+class JxmallGatewayApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
-
+  @Test
+  void contextLoads() {}
 }

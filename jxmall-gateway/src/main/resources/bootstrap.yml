@@ -12,12 +12,12 @@ spring:
         refresh-enabled: true
 
 #        命名空间
-        namespace: d1811724-f605-4522-9430-3ac08b858546
+        namespace: d9c1eebe-b054-4ce6-9d43-a7b09395c5ce
 #        配置集
-        extension-configs:
-          - data-id: datasource.yml
-            group: DEV_GROUP
-            refresh: true
+#        extension-configs:
+#          - data-id: datasource.yml
+#            group: DEV_GROUP
+#            refresh: true
 #          - data-id: mybatis-plus.yml
 #            group: DEV_GROUP
 #            refresh: true
