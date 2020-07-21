@@ -21,18 +21,18 @@
         <dependency>
             <groupId>com.samphanie.jxmall</groupId>
             <artifactId>jxmall-common</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
             <version>${jxmall.version}</version>
         </dependency>
         <!--        API网关-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-webflux</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 

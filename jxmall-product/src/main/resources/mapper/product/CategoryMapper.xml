@@ -16,5 +16,15 @@
         <result property="productCount" column="product_count"/>
     </resultMap>
 
+    <sql id="BASE_CLOUMS">
+        cat_id,name,parent_cid,cat_level,show_status,sort,icon,product_unit,product_count
+    </sql>
+
+    <select id="pages" resultType="com.samphanie.jxmall.product.vo.CategoryVo">
+        SELECT
+        <include refid="BASE_CLOUMS" />
+        FROM pms_category
+        WHERE show_status = 1
+    </select>
 
 </mapper>

@@ -16,8 +16,28 @@
 spring:
   cloud:
     gateway:
+      # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
+      discovery:
+        locator:
+          enabled: true
       routes:
-        - id: query_route
-          uri: https://www.baidu.com
+        - id: product_route
+          uri: lb://jxmall-product
           predicates:
-            - Query=url, baidu
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        - id: admin_route
+          uri: lb://jxmall-admin
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/jxmall-admin/$\{segment}
+
+## 前端项目，/api
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

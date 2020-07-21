@@ -1,8 +1,10 @@
 package com.samphanie.jxmall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.samphanie.jxmall.product.vo.CategoryVo;
 import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.Category;
@@ -20,20 +22,22 @@ import com.samphanie.common.utils.R;
  * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product/Category")
+@RequestMapping("product/category")
 public class CategoryController {
 
     @Resource
     private ICategoryService categoryService;
 
     /**
+     * 查出所有的分类以及子分类，以树形结构组装
      * 列表
      */
     @GetMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryService.queryPage(params);
+    public R list(){
 
-        return R.ok().put("page", page);
+        List<CategoryVo> categories = categoryService.listWithTree();
+
+        return R.ok().put("data", categories);
     }
 
 
@@ -44,7 +48,7 @@ public class CategoryController {
     public R info(@PathVariable("catId") Long catId){
 		Category category = categoryService.getById(catId);
 
-        return R.ok().put("category", category);
+        return R.ok().put("data", category);
     }
 
     /**
@@ -60,7 +64,7 @@ public class CategoryController {
     /**
      * 修改
      */
-    @PutMapping("/update")
+    @PostMapping("/update")
     public R update(@RequestBody Category category){
 		categoryService.updateById(category);
 
@@ -70,9 +74,12 @@ public class CategoryController {
     /**
      * 删除
      */
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
+
+        // 1. 检查当前删除的菜单是否被别的引用
+		// categoryService.removeByIds(Arrays.asList(catIds));
+        categoryService.removeMenuByIds(Arrays.asList(catIds));
 
         return R.ok();
     }
