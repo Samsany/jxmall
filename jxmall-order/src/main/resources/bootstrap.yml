@@ -2,9 +2,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.200.100:8848
+        server-addr: 182.254.171.162:8848
       config:
-        server-addr: 192.168.200.100:8848
+        server-addr: 182.254.171.162:8848
 #        配置文件类型： properties  yaml
         file-extension: yaml
 #        项目自身的nacos配置文件属于DEFAULT_GROUP下,默认读取

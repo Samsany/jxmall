@@ -64,6 +64,16 @@ public class CategoryController {
     /**
      * 修改
      */
+    @PostMapping("/update/sort")
+    public R updateSort(@RequestBody Category[] category){
+        categoryService.saveOrUpdateBatch(Arrays.asList(category));
+
+        return R.ok();
+    }
+
+    /**
+     * 修改
+     */
     @PostMapping("/update")
     public R update(@RequestBody Category category){
 		categoryService.updateById(category);
