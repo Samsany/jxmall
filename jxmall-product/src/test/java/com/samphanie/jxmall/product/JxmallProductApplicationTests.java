@@ -15,24 +15,26 @@ import java.util.List;
 @Slf4j
 class JxmallProductApplicationTests {
 
-  @Resource private BrandMapper brandMapper;
+    @Resource
+    private BrandMapper brandMapper;
 
-  @Test
-  void add() {
-    Brand brand = new Brand();
+    @Test
+    void add() {
+        Brand brand = new Brand();
 
-    brand.setBrandId(1L);
-    brand.setDescript("华为");
-    int insert = brandMapper.insert(brand);
+        brand.setBrandId(1L);
+        brand.setDescript("华为");
+        int insert = brandMapper.insert(brand);
 
-    Assertions.assertEquals(1, insert);
+        Assertions.assertEquals(1, insert);
 
-  }
+    }
 
-  @Test
-  void list() {
-    List<Brand> list = new LambdaQueryChainWrapper<>(brandMapper).ge(Brand::getBrandId, 1L).list();
+    @Test
+    void list() {
+        List<Brand> list = new LambdaQueryChainWrapper<>(brandMapper).ge(Brand::getBrandId, 1L).list();
 
-    list.forEach(e -> System.out.println(e));
-  }
+        list.forEach(e -> System.out.println(e));
+    }
+
 }

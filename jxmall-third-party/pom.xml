@@ -8,24 +8,18 @@
         <version>${jxmall.version}</version>
     </parent>
 
-    <artifactId>jxmall-gateway</artifactId>
+    <artifactId>jxmall-third-party</artifactId>
     <version>${jxmall.version}</version>
-    <name>jxmall-gateway</name>
-    <description>网关服务</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <name>jxmall-third-party</name>
+    <description>第三方服务</description>
 
     <dependencies>
+
         <dependency>
             <groupId>com.samphanie.jxmall</groupId>
             <artifactId>jxmall-common</artifactId>
+            <version>${jxmall.version}</version>
             <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
                 <exclusion>
                     <groupId>com.baomidou</groupId>
                     <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -35,13 +29,26 @@
                     <artifactId>mysql-connector-java</artifactId>
                 </exclusion>
             </exclusions>
-            <version>${jxmall.version}</version>
         </dependency>
-        <!--        API网关-->
+
+        <!--        阿里云OSS对象存储-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alicloud-oss</artifactId>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.aliyun.oss</groupId>-->
+        <!--            <artifactId>aliyun-sdk-oss</artifactId>-->
+        <!--            <version>3.10.2</version>-->
+        <!--        </dependency>-->
+
+<!--       七牛云对象存储 -->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>[7.2.0, 7.2.99]</version>
+        </dependency>
+
     </dependencies>
 
 

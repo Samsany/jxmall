@@ -25,6 +25,7 @@
         <module>jxmall-common</module>
         <module>jxmall-admin</module>
         <module>jxmall-generator</module>
+        <module>jxmall-third-party</module>
     </modules>
 
     <properties>

@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 182.254.171.162:8848
+      config:
+        server-addr: 182.254.171.162:8848
+#        配置文件类型： properties  yaml
+        file-extension: yaml
+#        项目自身的nacos配置文件属于DEFAULT_GROUP下,默认读取
+        shared-configs: server.yml,oss.yml
+        refresh-enabled: true
+
+#        命名空间
+        namespace: e18b5c72-d68b-41de-b6e6-95b1635c5764
+#        配置集
+#        extension-configs:
+#          - data-id: datasource.yml
+#            group: DEV_GROUP
+#            refresh: true

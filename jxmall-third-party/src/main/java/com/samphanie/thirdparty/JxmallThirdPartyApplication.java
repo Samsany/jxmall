@@ -1,17 +1,19 @@
-package com.samphanie.jxmall.gateway;
+package com.samphanie.thirdparty;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+/**
+ * @author Dries
+ */
 @EnableDiscoveryClient
-//@SpringBootApplication(exclude = DataSourceAutoConfiguration.class) 排除数据库连接配置
 @SpringBootApplication
-public class JxmallGatewayApplication {
+public class JxmallThirdPartyApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(JxmallGatewayApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(JxmallThirdPartyApplication.class, args);
+    }
 
 }

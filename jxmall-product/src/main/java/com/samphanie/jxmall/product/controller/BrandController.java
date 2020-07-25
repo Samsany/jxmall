@@ -10,6 +10,8 @@ import com.samphanie.jxmall.product.service.IBrandService;
 import com.samphanie.common.utils.PageUtils;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+
 import com.samphanie.common.utils.R;
 
 /**
@@ -20,7 +22,7 @@ import com.samphanie.common.utils.R;
  * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product/Brand")
+@RequestMapping("product/brand")
 public class BrandController {
 
     @Resource
@@ -51,7 +53,7 @@ public class BrandController {
      * 保存
      */
     @PostMapping("/save")
-    public R save(@RequestBody Brand brand){
+    public R save(@Valid @RequestBody Brand brand){
 		brandService.save(brand);
 
         return R.ok();
@@ -60,7 +62,7 @@ public class BrandController {
     /**
      * 修改
      */
-    @PutMapping("/update")
+    @PostMapping("/update")
     public R update(@RequestBody Brand brand){
 		brandService.updateById(brand);
 
@@ -70,7 +72,7 @@ public class BrandController {
     /**
      * 删除
      */
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     public R delete(@RequestBody Long[] brandIds){
 		brandService.removeByIds(Arrays.asList(brandIds));
 
