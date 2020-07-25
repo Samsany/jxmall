@@ -1,5 +1,6 @@
 package com.samphanie.jxmall.product.exception;
 
+import com.samphanie.common.exception.BizCodeEnume;
 import com.samphanie.common.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
@@ -29,13 +30,13 @@ public class JxmallExceptionControllerAdvice {
             errorMap.put(fieldError.getField(),fieldError.getDefaultMessage());
         });
 
-        return R.error(400, "数据校验出现问题").put("data", errorMap);
+        return R.error(BizCodeEnume.VALIDATE_EXCEPTION.getCode(), BizCodeEnume.VALIDATE_EXCEPTION.getMsg()).put("data", errorMap);
     }
 
     @ExceptionHandler(value = Throwable.class)
     public R handleException(Throwable throwable) {
 
-        return R.error();
+        return R.error(BizCodeEnume.UNKNOWN_EXCEPTION.getCode(), BizCodeEnume.UNKNOWN_EXCEPTION.getMsg());
     }
 
 }

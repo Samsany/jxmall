@@ -3,6 +3,10 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.samphanie.common.valid.AddGroup;
+import com.samphanie.common.valid.UpdateGroup;
+import com.samphanie.common.valid.UpdateStatusGroup;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.Brand;
@@ -53,7 +57,7 @@ public class BrandController {
      * 保存
      */
     @PostMapping("/save")
-    public R save(@Valid @RequestBody Brand brand){
+    public R save(@Validated(AddGroup.class) @RequestBody Brand brand){
 		brandService.save(brand);
 
         return R.ok();
@@ -63,8 +67,18 @@ public class BrandController {
      * 修改
      */
     @PostMapping("/update")
-    public R update(@RequestBody Brand brand){
+    public R update(@Validated(UpdateGroup.class) @RequestBody Brand brand){
 		brandService.updateById(brand);
+
+        return R.ok();
+    }
+
+    /**
+     * 修改状态
+     */
+    @PostMapping("/update/status")
+    public R updateStatus(@Validated(UpdateStatusGroup.class) @RequestBody Brand brand){
+        brandService.updateById(brand);
 
         return R.ok();
     }
