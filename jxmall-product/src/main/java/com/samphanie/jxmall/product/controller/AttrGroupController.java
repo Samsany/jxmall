@@ -20,7 +20,7 @@ import com.samphanie.common.utils.R;
  * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product/AttrGroup")
+@RequestMapping("product/attrgroup")
 public class AttrGroupController {
 
     @Resource
@@ -29,9 +29,12 @@ public class AttrGroupController {
     /**
      * 列表
      */
-    @GetMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = attrGroupService.queryPage(params);
+    @GetMapping("/list/{catelogId}")
+    public R list(@RequestParam Map<String, Object> params,
+                  @PathVariable("catelogId") Long catelogId){
+        // PageUtils page = attrGroupService.queryPage(params);
+
+        PageUtils page = attrGroupService.queryPage(params, catelogId);
 
         return R.ok().put("page", page);
     }

@@ -20,7 +20,7 @@ import com.samphanie.common.utils.R;
  * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product/Attr")
+@RequestMapping("product/attr")
 public class AttrController {
 
     @Resource
