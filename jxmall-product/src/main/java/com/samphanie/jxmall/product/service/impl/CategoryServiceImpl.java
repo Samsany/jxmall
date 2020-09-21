@@ -3,10 +3,7 @@ package com.samphanie.jxmall.product.service.impl;
 import com.samphanie.jxmall.product.vo.CategoryVo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -58,6 +55,36 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
                 .sorted(Comparator.comparingInt(menu -> (menu.getSort() == null ? 0 : menu.getSort())))
                 .collect(Collectors.toList());
         return level1Menus;
+    }
+
+    /**
+     * [1, 21, 221]
+     * 找到catelogId的完整路径
+     */
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+
+        List<Long> paths = new ArrayList<>();
+        List<Long> parentPath = findParentPath(catelogId, paths);
+
+        // 将集合逆序排列
+        Collections.reverse(parentPath);
+        return parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    // [221, 21 , 1]
+    private List<Long> findParentPath(Long catelogId, List<Long> paths){
+        // 1.收集当前节点ID
+        paths.add(catelogId);
+
+        Category byId = getById(catelogId);
+
+        if (byId.getParentCid() != 0) {
+            findParentPath(byId.getParentCid(), paths);
+        }
+
+        return paths;
+
     }
 
     /**

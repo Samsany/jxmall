@@ -3,6 +3,7 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.samphanie.jxmall.product.service.ICategoryService;
 import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.AttrGroup;
@@ -25,6 +26,8 @@ public class AttrGroupController {
 
     @Resource
     private IAttrGroupService attrGroupService;
+    @Resource
+    private ICategoryService categoryService;
 
     /**
      * 列表
@@ -45,7 +48,10 @@ public class AttrGroupController {
      */
     @GetMapping("/info/{attrGroupId}")
     public R info(@PathVariable("attrGroupId") Long attrGroupId){
+
 		AttrGroup attrGroup = attrGroupService.getById(attrGroupId);
+		Long[] path = categoryService.findCatelogPath(attrGroup.getCatelogId());
+		attrGroup.setCatelogPath(path);
 
         return R.ok().put("attrGroup", attrGroup);
     }

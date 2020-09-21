@@ -28,5 +28,13 @@ public interface ICategoryService extends IService<Category> {
      * 根据ID删除/批量删除 菜单
      */
     void removeMenuByIds(List<Long> asList);
+
+    /**
+     * 找到catelogId的完整路径
+     * 【父/子/孙】
+     * @param catelogId
+     * @return
+     */
+    Long[] findCatelogPath(Long catelogId);
 }
 

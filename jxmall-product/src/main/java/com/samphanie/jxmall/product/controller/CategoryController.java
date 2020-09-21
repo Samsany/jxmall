@@ -32,7 +32,7 @@ public class CategoryController {
      * 查出所有的分类以及子分类，以树形结构组装
      * 列表
      */
-    @GetMapping("/list")
+    @GetMapping("/list/tree")
     public R list(){
 
         List<CategoryVo> categories = categoryService.listWithTree();

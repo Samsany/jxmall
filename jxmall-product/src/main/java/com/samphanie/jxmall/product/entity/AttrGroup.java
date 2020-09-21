@@ -1,5 +1,7 @@
 package com.samphanie.jxmall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -22,7 +24,7 @@ public class AttrGroup implements Serializable {
 	/**
 	 * 分组id
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Long attrGroupId;
 	/**
 	 * 组名
@@ -44,5 +46,8 @@ public class AttrGroup implements Serializable {
 	 * 所属分类id
 	 */
 	private Long catelogId;
+
+	@TableField(exist = false)
+	private Long[] catelogPath;
 
 }
