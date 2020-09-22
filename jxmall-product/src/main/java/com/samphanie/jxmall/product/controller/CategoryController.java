@@ -76,7 +76,7 @@ public class CategoryController {
      */
     @PostMapping("/update")
     public R update(@RequestBody Category category){
-		categoryService.updateById(category);
+		categoryService.updateCascade(category);
 
         return R.ok();
     }

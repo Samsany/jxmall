@@ -13,6 +13,11 @@
         <result property="firstLetter" column="first_letter"/>
         <result property="sort" column="sort"/>
     </resultMap>
+    <update id="updateCategory">
+        UPDATE 'pms_category_brand_relation'
+        SET catelog_name = #{name}
+        WHERE catelog_id = #{catId}
+    </update>
 
 
 </mapper>

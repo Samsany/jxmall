@@ -1,8 +1,10 @@
 package com.samphanie.jxmall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.CategoryBrandRelation;
@@ -20,11 +22,23 @@ import com.samphanie.common.utils.R;
  * @date 2020-07-03 22:41:16
  */
 @RestController
-@RequestMapping("product/CategoryBrandRelation")
+@RequestMapping("product/categorybrandrelation")
 public class CategoryBrandRelationController {
 
     @Resource
     private ICategoryBrandRelationService categoryBrandRelationService;
+
+    /**
+     * 获取当前品牌关联的所有分类列表
+     */
+    @GetMapping("/catelog/list")
+    public R list(@RequestParam("brandId") Long brandId){
+        List<CategoryBrandRelation> list = categoryBrandRelationService.list(
+                new QueryWrapper<CategoryBrandRelation>().lambda().eq(CategoryBrandRelation::getBrandId, brandId)
+        );
+
+        return R.ok().put("data", list);
+    }
 
     /**
      * 列表
@@ -52,7 +66,7 @@ public class CategoryBrandRelationController {
      */
     @PostMapping("/save")
     public R save(@RequestBody CategoryBrandRelation categoryBrandRelation){
-		categoryBrandRelationService.save(categoryBrandRelation);
+		categoryBrandRelationService.saveDetail(categoryBrandRelation);
 
         return R.ok();
     }

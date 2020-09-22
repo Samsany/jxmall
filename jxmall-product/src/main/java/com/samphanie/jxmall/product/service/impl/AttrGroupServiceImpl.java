@@ -37,25 +37,29 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupMapper, AttrGroup
     public PageUtils queryPage(Map<String, Object> params, Long catelogId) {
 
         log.info("=====》 {}", JSONUtil.toJsonStr(params));
+
+        String key = (String) params.get("key");
+        LambdaQueryWrapper<AttrGroup> wrapper = new QueryWrapper<AttrGroup>().lambda();
+        if (StrUtil.isNotEmpty(key)) {
+            wrapper.and(e -> {
+                e.eq(AttrGroup::getAttrGroupId, key).or().like(AttrGroup::getAttrGroupName, key);
+            });
+        }
+
         if (catelogId == 0) {
             IPage<AttrGroup> page = this.page(
                     new Query<AttrGroup>().getPage(params),
-                    new QueryWrapper<AttrGroup>()
+                    wrapper
             );
+            page.setTotal(page.getRecords().size());
 
             return new PageUtils(page);
         } else {
-            String key = (String) params.get("key");
-            LambdaQueryWrapper<AttrGroup> wrapper = new QueryWrapper<AttrGroup>().lambda().eq(AttrGroup::getCatelogId, catelogId);
-            if (StrUtil.isNotEmpty(key)) {
-                wrapper.and(e -> {
-                    e.eq(AttrGroup::getAttrGroupId, key).or().like(AttrGroup::getAttrGroupName, key);
-                });
-            }
-
-            IPage<AttrGroup> page = this.page(new Query<AttrGroup>().getPage(params),
+            wrapper.eq(AttrGroup::getCatelogId, catelogId);
+            IPage<AttrGroup> page = this.page(
+                    new Query<AttrGroup>().getPage(params),
                     wrapper);
-
+            page.setTotal(page.getRecords().size());
             return new PageUtils(page);
 
         }

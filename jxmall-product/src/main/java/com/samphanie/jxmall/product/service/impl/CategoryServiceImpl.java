@@ -1,5 +1,6 @@
 package com.samphanie.jxmall.product.service.impl;
 
+import com.samphanie.jxmall.product.service.ICategoryBrandRelationService;
 import com.samphanie.jxmall.product.vo.CategoryVo;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import com.samphanie.common.utils.Query;
 import com.samphanie.jxmall.product.mapper.CategoryMapper;
 import com.samphanie.jxmall.product.entity.Category;
 import com.samphanie.jxmall.product.service.ICategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -26,6 +28,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 
     @Resource
     private CategoryMapper categoryMapper;
+    @Resource
+    private ICategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -114,9 +118,18 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     public void removeMenuByIds(List<Long> asList) {
 
         // TODO 检查当前删除的菜单是否被别的引用
-
-        //
         baseMapper.deleteBatchIds(asList);
     }
 
+    /**
+     * 级联更新所有关联数据
+     * @param category
+     */
+    @Transactional
+    @Override
+    public void updateCascade(Category category) {
+        updateById(category);
+
+        categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
+    }
 }
