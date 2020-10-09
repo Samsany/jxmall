@@ -48,7 +48,6 @@ public class CategoryVo {
      */
     private Integer productCount;
 
-//    @TableField(exist = false)
     private List<CategoryVo> children;
 
 }

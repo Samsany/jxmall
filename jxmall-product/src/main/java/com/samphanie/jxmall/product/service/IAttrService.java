@@ -3,6 +3,7 @@ package com.samphanie.jxmall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.samphanie.common.utils.PageUtils;
 import com.samphanie.jxmall.product.entity.Attr;
+import com.samphanie.jxmall.product.vo.AttrVo;
 
 import java.util.Map;
 
@@ -16,5 +17,7 @@ import java.util.Map;
 public interface IAttrService extends IService<Attr> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void saveAttr(AttrVo attr);
 }
 

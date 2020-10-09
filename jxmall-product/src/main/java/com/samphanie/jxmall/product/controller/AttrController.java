@@ -3,6 +3,7 @@ package com.samphanie.jxmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.samphanie.jxmall.product.vo.AttrVo;
 import org.springframework.web.bind.annotation.*;
 
 import com.samphanie.jxmall.product.entity.Attr;
@@ -51,8 +52,8 @@ public class AttrController {
      * 保存
      */
     @PostMapping("/save")
-    public R save(@RequestBody Attr attr){
-		attrService.save(attr);
+    public R save(@RequestBody AttrVo attr){
+		attrService.saveAttr(attr);
 
         return R.ok();
     }
